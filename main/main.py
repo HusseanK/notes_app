@@ -1,27 +1,19 @@
 from secondary_windows import NoteWindow
 from commands import check_window_status
 
-def create_new_notepad(event = None):
-    tk = NoteWindow()
-    note_list.append(tk)
-
-def bind_buttons(tk):
-    tk.new_notepad.configure(command = lambda: create_new_notepad())
+from tkinter_main import TkinterWindow
 
 
-
-note_list = []
 
 if __name__ == "__main__":
     tk = NoteWindow()
-    note_list.append(tk)
-    bind_buttons(tk)
-
-    
 
     def do_thing():
-        check_window_status(note_list)
-        tk.after(20, do_thing)
+        check_window_status(TkinterWindow.windows)
+        try:
+            tk.after(20, do_thing)
+        except Exception as e:
+            print(e)
 
     do_thing()
 
